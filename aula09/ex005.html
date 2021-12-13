@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primeiros passos com DOM</title>
+    <style>
+        body {
+            background-color:rgba(12, 12, 189, 0.342);
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Iniciando estudos com DOM</h1>
+    <p>Aqui vai o resultado.</p>
+    <p>Aprendendo a usar o <strong>DOM</strong> em JavaScript</p>
+    <div>Clique em mim</div>
+    <div id="msg">Segunda div</div>
+    <div id="sub">terceira div</div>
+    <script>
+        let p1 = document.getElementsByTagName('p')[1]; // Aqui estou selecionando o primeiro parágrafo do documento - posição [0].
+        let corpo = document.body;
+        let d = document.getElementById('msg');
+        let t = document.querySelector('div#sub');
+        document.write(`O conteúdo é: ${p1.innerText}<br>`); // o innerText serve para mostrar o que está escrito no elemento que foi selecionado.
+        document.write(`O conteúdo é: ${p1.innerHTML}`); // Usando o innerHTML o texto vem também com a formatação.
+        p1.style.background = 'rgb(0, 0, 0, 0.300)'; // aqui consigo alterar as propriedades de estilo. Nesse caso o background-color
+        p1.style.color = "white";
+        //corpo.style.background = 'orange';
+        d.style.background = 'green';
+        d.style.color = "white";
+        d.innerText = "Estou aguardando..." // Aqui também é possível mudar o conteúdo do elemento original.
+        document.getElementById('msg').innerText = "Olá!" // o conteúdo também pode ser modificado diretamente sem a necessidade de criação de uma variável.
+
+        // Usando o querySelector
+        
+        t.style.background = "black";
+        t.style.color = 'blue';
+         
+    </script>
+</body>
+</html>
