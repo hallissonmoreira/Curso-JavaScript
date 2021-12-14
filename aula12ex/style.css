@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgba(0, 0, 0, 0.808);
+    color: white;
+}
+
+header h1 {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    font-weight: normal;
+}
+
+main {
+    position: relative;
+    width: 500px;
+    height: 280px;
+    background-color: white;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.363);
+}
+
+#hours {
+    text-align: center;
+    padding-top: 10px; 
+    color: black;
+    line-height: 1.3em;
+}
+
+img {
+    position: absolute;
+    top: 50%;
+    left:50%;
+    border-radius: 50%;
+    transform: translate(-50%, -38%);
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+   
+    
+}
