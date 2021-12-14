@@ -7,8 +7,9 @@ function verificar() {
     let sexo = document.getElementsByName('txtsex');
     let img = document.createElement("img");
     img.setAttribute('id', 'foto')
-    // verificando o sexo.
-    if (sexo[0].checked) {
+    if (ano.value == 0 || ano.value > data.getFullYear()) {
+        res.innerHTML = "Dados inconsistentes. Verifique os dados e tente novamente!"
+    } else if (sexo[0].checked) {
         if (idade >=0 && idade < 12) {
             img.setAttribute('src', 'imagens/manC.png');
         } else if (idade < 21) {
