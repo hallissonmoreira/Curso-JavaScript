@@ -35,6 +35,7 @@ function adicionar() {
         item.text = `Valor ${n.value} adicionado.`
         lista.appendChild(item)
         vetor.push(Number(n.value))
+        res.innerHTML = ''
     } else if (wasAdded(n.value, vetor)) {
         alert('Esse valor já foi inserido! Digite outro valor!')
     } else if (!verifNumber(n.value)) {
@@ -56,28 +57,34 @@ function adicionar() {
 function finalizar() {
     let res = document.getElementById('res')
     let soma = 0;  
-
-    for (let i = 0; i < vetor.length-1; i++) {
-        for (let j = i+1; j < vetor.length; j++) {
-            if(vetor[i] > vetor[j]) {
-                let aux = vetor[i]
-                vetor[i] = vetor[j];
-                vetor[j] = aux;
+    if (vetor.length == 0) {
+        alert('Nenhum valor foi adicionado!')
+    } else {
+        for (let i = 0; i < vetor.length-1; i++) {
+            for (let j = i+1; j < vetor.length; j++) {
+                if(vetor[i] > vetor[j]) {
+                    let aux = vetor[i]
+                    vetor[i] = vetor[j];
+                    vetor[j] = aux;
+                }
             }
-        }
-
-    }
-
-    for(let c = 0; c < vetor.length; c++) {
-        soma += vetor[c]
-        
-    }
-    let media = (soma / vetor.length).toFixed(2).replace('.',',')
-    let q = vetor.length
     
-    res.innerHTML = `<p>Ao todo temos <strong>${q}</strong> números cadastrados;</p>`
-    res.innerHTML += `<p>O maior valor informado foi <strong>${vetor[q-1]}</strong> e ele está na posição <strong>${vetor.indexOf(vetor[q-1])}</strong>;</p>`
-    res.innerHTML += `<p>O menor valor informado foi <strong>${vetor[0]}</strong> e ele está na posição <strong>${vetor.indexOf(vetor[0])}</strong>;</p>`
-    res.innerHTML += `<p>A soma de todos os valores informados é de <strong>${soma}</strong>;</p>`
-    res.innerHTML += `<p>A média dos valores informados é de <strong>${media}</strong>.</p>`
+        }
+    
+        for(let c = 0; c < vetor.length; c++) {
+            soma += vetor[c]
+            
+        }
+        let media = (soma / vetor.length).toFixed(2).replace('.',',')
+        let q = vetor.length
+        
+        res.innerHTML = `<p>Ao todo temos <strong>${q}</strong> números cadastrados;</p>`
+        res.innerHTML += `<p>O maior valor informado foi <strong>${vetor[q-1]}</strong> e ele está na posição <strong>${vetor.indexOf(vetor[q-1])}</strong>;</p>`
+        res.innerHTML += `<p>O menor valor informado foi <strong>${vetor[0]}</strong> e ele está na posição <strong>${vetor.indexOf(vetor[0])}</strong>;</p>`
+        res.innerHTML += `<p>A soma de todos os valores informados é de <strong>${soma}</strong>;</p>`
+        res.innerHTML += `<p>A média dos valores informados é de <strong>${media}</strong>.</p>`
+    }
+        
 }
+   
+    
