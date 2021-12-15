@@ -29,10 +29,6 @@ main {
     padding-bottom: 10px;
 }
 
-#res {
-    border: 1px solid black;
-    width: 150px;
-}
 footer {
     text-align: center;
     color: white;

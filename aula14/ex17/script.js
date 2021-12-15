@@ -1,12 +1,16 @@
 function gerarTabuada() {
     let n = document.getElementById('txtnum')
-    let res = document.getElementById('res')
-    let number = Number(n.value)
+    let tab = document.getElementById('seltab')
     
-    
-    for ( let i = 0; i < 10; i++ ) {
-        let produto = i * number;
-        res.innerHTML = ` ${number} x ${i} = ${produto}.<br>`
-    }    
-
+    if (n.value.length == 0) {
+        alert('Por favor digite um número!')
+    } else {
+        let number = Number(n.value)
+        tab.innerHTML = ''
+        for ( let i = 0; i < 10; i++ ) {
+            let item = document.createElement('option')
+            item.text = ` ${number} x ${i} = ${number*i}`
+            tab.appendChild(item)
+        }
+    }
 }

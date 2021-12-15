@@ -3,20 +3,32 @@ function contar() {
     let fim = document.getElementById('txtfim')
     let passo = document.getElementById('txtpasso')
     let res = document.getElementById('res')
-    let i = Number(inicio.value)
-    let f = Number(fim.value)
-    let p = Number(passo.value)
-    let j;
     
     
-    
-    if (i == 0 || f == 0 || p == 0) {
-        alert('Favor preencher todos os campos! ')
-        
+    if (inicio.value.length == 0 || fim.value.length == 0 || passo.value.length == 0) {
+        alert('Faltam dados!');
+        res.innerHTML = 'Impossível contar!'
     } else {
-        for ( j = i; j <= f; j++ ) {
-            res.innerHTML = `<span>${j}</span>`;
+        res.innerHTML = "Contando: <br>" 
+        let i = Number(inicio.value)
+        let f = Number(fim.value)
+        let p = Number(passo.value)
+        let j;
+        if (p <= 0) {
+            alert('Impossível contar! O valor do passo deve ser maior do que 0')
+            res.innerHTML = 'Impossível contar!'
+        } else {
+            if ( i < f) {
+                for ( j = i; j <= f; j += p) {
+                    res.innerHTML += `\u{1F449} ${j}  ` ;
+                }
+                
+            } else {
+                for ( j = i; j >= f; j -= p) {
+                    res.innerHTML += `\u{1F449} ${j}  ` ;
+                }
+            }
+            res.innerHTML += `\u{1F3C1}`   
         }
     }
-    
 }
