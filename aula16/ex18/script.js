@@ -17,7 +17,7 @@ function verifNumber(n) {
 
 // Validação 02
 function wasAdded(n, v) {
-    if(v.indexOf(n) != -1) {
+    if(v.indexOf(Number(n)) != -1) {
         return true;
     } else {
         return false;
@@ -26,21 +26,22 @@ function wasAdded(n, v) {
 
 // Bloco de adição do valor
 function adicionar() {
-    let n = Number(document.getElementById('fnum').value)
+    //let n = Number(document.getElementById('fnum').value)
+    let n = document.getElementById('fnum')
     let lista = document.getElementById('flista')
     
-    if (verifNumber(n) && !wasAdded(n, vetor)) {
+    if (verifNumber(n.value) && !wasAdded(n.value, vetor)) {
         let item = document.createElement('option')
-        item.text = `Valor ${n} adicionado.`
+        item.text = `Valor ${n.value} adicionado.`
         lista.appendChild(item)
-        vetor.push(n)
-    } else {
-        alert('Valor inválido ou já inserido!')
+        vetor.push(Number(n.value))
+    } else if (wasAdded(n.value, vetor)) {
+        alert('Esse valor já foi inserido! Digite outro valor!')
+    } else if (!verifNumber(n.value)) {
+        alert('O valor digitado não é válido!')
     }
-    // Falta implementar a ação de limpar o campo número após a adição de um número anterior.
-    
-    
-    console.log(typeof(n))
+    n.value = ''
+    n.focus()
 }
 
 // Bloco de resultado da análise
@@ -54,9 +55,7 @@ function adicionar() {
 */
 function finalizar() {
     let res = document.getElementById('res')
-    let soma = 0;
-    
-    
+    let soma = 0;  
 
     for (let i = 0; i < vetor.length-1; i++) {
         for (let j = i+1; j < vetor.length; j++) {
@@ -75,17 +74,10 @@ function finalizar() {
     }
     let media = (soma / vetor.length).toFixed(2).replace('.',',')
     let q = vetor.length
-    res.innerHTML = '<hr>'
-    res.innerHTML += `<p>Ao todo temos <strong>${q}</strong> números cadastrados;</p>`
+    
+    res.innerHTML = `<p>Ao todo temos <strong>${q}</strong> números cadastrados;</p>`
     res.innerHTML += `<p>O maior valor informado foi <strong>${vetor[q-1]}</strong> e ele está na posição <strong>${vetor.indexOf(vetor[q-1])}</strong>;</p>`
     res.innerHTML += `<p>O menor valor informado foi <strong>${vetor[0]}</strong> e ele está na posição <strong>${vetor.indexOf(vetor[0])}</strong>;</p>`
     res.innerHTML += `<p>A soma de todos os valores informados é de <strong>${soma}</strong>;</p>`
     res.innerHTML += `<p>A média dos valores informados é de <strong>${media}</strong>.</p>`
-
-    
-    
-    //console.log(`O maior valor informado foi ${vetor[vetor.length]} e ele está na posição vetor.indexOf(x)`)
-    //console.log(`A media dos valores é ${media}`)
-
-
 }
